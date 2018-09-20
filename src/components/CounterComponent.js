@@ -6,8 +6,8 @@ class CouterComponent extends Component {
       <div>
         <h1>Redux sage</h1>
 
-        <button onClick={() => { this.props.onDecrement(2) }}>Decrement --</button>
-        <button onClick={() => { this.props.onIncrement(2) }}>Increment ++</button>
+        <button onClick={() => { this.props.onDecrement(1) }}>Decrement --</button>
+        <button onClick={() => { this.props.onIncrement(1) }}>Increment ++</button>
 
         <p>couter: {this.props.times}</p>
       </div>

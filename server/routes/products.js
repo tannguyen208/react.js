@@ -1,33 +1,67 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
-var db = require('../helpers/mongodb');
+var db = require("../helpers/mongodb");
 
-router.get('/products', function (req, res, next) {
+router.get("/products", function(req, res, next) {
   db.findDocuments("products", result => {
-    res.json(result);
+    res.json({
+      status: 200,
+      message: "",
+      data: result
+    });
   });
 });
 
-router.get('/products/:objectId', function (req, res, next) {
+router.get("/products/:objectId", function(req, res, next) {
   let objectId = req.params.objectId;
   db.findDocument("products", objectId, result => {
-    res.json(result);
-  })
+    if (result)
+      res.json({
+        status: 200,
+        message: "",
+        data: result
+      });
+  });
 });
 
-router.get('/products/create', function (req, res, next) {
-  db.insertDocument({}, "products", result => {
-    res.json(result);
-  })
+router.post("/products/create", function(req, res, next) {
+  let jsonData = req.body;
+  if (!jsonData) return res.sendStatus(400);
+  db.insertDocument(jsonData, "products", result => {
+    if (result)
+      res.json({
+        status: 200,
+        message: "created",
+        data: result
+      });
+  });
 });
 
-router.get('/products/update/:id', function (req, res, next) {
+router.post("/products/update/:objectId", function(req, res, next) {
+  let objectId = req.params.objectId;
+  let jsonData = req.body;
+  if (!jsonData) return res.sendStatus(400);
 
+  db.updateDocument(jsonData, "products", objectId, result => {
+    if (result.ok === 1)
+      res.json({
+        status: 200,
+        message: "updated",
+        data: {}
+      });
+  });
 });
 
-router.get('/products/delete/:id', function (req, res, next) {
-
+router.post("/products/delete/:objectId", function(req, res, next) {
+  let objectId = req.params.objectId;
+  db.deleteDocument("products", objectId, result => {
+    if (result.ok === 1)
+      res.json({
+        status: 200,
+        message: "deleted",
+        data: {}
+      });
+  });
 });
-
 
 module.exports = router;

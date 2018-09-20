@@ -1,11 +1,94 @@
-import { put, call, takeEvery, takeLatest, fork } from "redux-saga/effects";
+import { put, takeLatest } from "redux-saga/effects";
 import * as actionTypes from "../actions/actionTypes";
-import { API } from "../helpers/api";
+import { Api } from "./Api";
 
-export function* fetchProducts(action) {
+/**
+|--------------------------------------------------
+| fetch
+|--------------------------------------------------
+*/
+function* fetchProducts() {
   try {
-    const products = yield call(fetch(API + "products"), );
+    const receivedProducts = yield Api.getProductsFromApi();
+    yield put({
+      type: actionTypes.PRODUCT_FETCHs_SUCCESS,
+      receivedProducts
+    });
   } catch (error) {
-    yield put({ type: actionTypes.ERROR, message: error.message });
+    yield put({
+      type: actionTypes.PRODUCT_FETCHs_ERROR,
+      error
+    });
   }
+}
+
+export function* watchFetchProducts() {
+  yield takeLatest(actionTypes.PRODUCT_FETCHs, fetchProducts);
+}
+
+/**
+|--------------------------------------------------
+| add new product
+|--------------------------------------------------
+*/
+function* createProduct(action) {
+  try {
+    const result = yield Api.createProductFromApi(action.newProduct);
+
+    if (result) {
+      yield put({ type: actionTypes.PRODUCT_FETCHs, sort: "desc" });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export function* watchCreateProduct() {
+  yield takeLatest(actionTypes.PRODUCT_CREATE, createProduct);
+}
+
+/**
+|--------------------------------------------------
+| update product
+|--------------------------------------------------
+*/
+function* updateProduct(action) {
+  try {
+    const result = yield Api.updateProductFromApi(action.updateProduct);
+    if (result) {
+      yield put({
+        type: actionTypes.PRODUCT_UPDATE_SUCCESS,
+        updateProduct: action.updateProduct
+      });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export function* watchUpdateProduct() {
+  yield takeLatest(actionTypes.PRODUCT_UPDATE, updateProduct);
+}
+
+/**
+|--------------------------------------------------
+| delete product
+|--------------------------------------------------
+*/
+function* deleteProduct(action) {
+  try {
+    const result = yield Api.deleteProductFromApi(action.deleteProduct);
+    if (result) {
+      yield put({
+        type: actionTypes.PRODUCT_DELETE_SUCCESS,
+        deleteProduct: action.deleteProduct
+      });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export function* watchdeleteProduct() {
+  yield takeLatest(actionTypes.PRODUCT_DELETE, deleteProduct);
 }

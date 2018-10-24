@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-
+import Adv from "./adv";
 const Context = React.createContext();
 
 const Family = () => (
@@ -42,4 +42,4 @@ const LIST_VALUES_CONTEXT = [
   }
 ];
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(<Adv />, document.getElementById("root"));

@@ -1,4 +1,7 @@
 import React from "react";
+import { Route } from "react-router-dom";
+import Locale from "../locales";
+import routes from "src/configs/routes";
 
 /**
  * @version 1.0.0
@@ -7,7 +10,14 @@ import React from "react";
  */
 class Layout extends React.Component {
   render = () => {
-    return null;
+    return (
+      <div>
+        🇺🇲 🇻🇳
+        {routes.map((route, index) => (
+          <Route key={index} {...route} />
+        ))}
+      </div>
+    );
   };
 }
 

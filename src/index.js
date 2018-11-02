@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Switch } from "react-router-dom";
 import * as serviceWorker from "src/serviceWorker";
 
 import rootStore from "src/rootStore";
@@ -18,7 +18,9 @@ function App() {
   return (
     <Provider store={rootStore}>
       <BrowserRouter>
-        <Layout />
+        <Switch>
+          <Layout />
+        </Switch>
       </BrowserRouter>
     </Provider>
   );

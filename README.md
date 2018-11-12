@@ -1,5 +1,18 @@
 This project was bootstrapped with [Facebook](https://facebook.com/pin208).
 
+## Get start
+```javascript
+git clone https://github.com/tannguyen208/reactjs.git
+npm install -g json-server
+npm install
+```
+
+## Run
+```javascript
+npm start
+json-server --watch src/modules/todo/todos.json -p 3001
+```
+
 ## Contents
 
 1. `displayName`

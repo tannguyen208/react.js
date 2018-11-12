@@ -1,17 +1,18 @@
 import { connect } from "react-redux";
-import { GET_TODOS } from "./actions/types";
+import { FETCH_TODOS } from "./actions/types";
 import { default as TodoComponent } from "./components/TodoComponent";
 import { createLoadingSelector } from "src/components/functions/loading/loadingSelectors";
-import { getTodos } from "./actions";
+import { fetchTodos } from "./actions";
 
-// Show loading on GET_TODOS_REQUEST
-const loadingSelector = createLoadingSelector([GET_TODOS]);
+// Show loading on FETCH_TODOS_REQUEST
+const loadingSelector = createLoadingSelector([FETCH_TODOS]);
 const mapStateToProps = state => ({
-  todos: state.todoReducer,
+  data: state.todoReducer,
   isFetching: loadingSelector(state)
 });
+
 const mapDispatchToProps = {
-  getTodos
+  fetchTodos
 };
 
 export default connect(

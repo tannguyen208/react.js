@@ -1,20 +1,15 @@
 import * as actionTypes from "../actions/types";
 
-const initialState = { todos: [] };
+const initialState = { todos: [], status: "initial" };
 export const todoReducer = (state = initialState, action) => {
-  console.log(action);
-  
-  switch (action.type) {
-    case actionTypes.GET_TODOS_REQUEST:
-      return { ...state, isFetching: true };
-    case actionTypes.GET_TODOS_SUCCESS:
-      return { ...state, isFetching: false, todos: action.payload };
-    case actionTypes.GET_TODOS_FAILURE:
-      return {
-        ...state,
-        isFetching: false,
-        errorMessage: action.payload.message
-      };
+  let { type, status, payload } = action;
+  switch (type) {
+    case actionTypes.FETCH_TODOS_REQUEST:
+      return { ...state, status, todos: payload };
+    case actionTypes.FETCH_TODOS_SUCCESS:
+      return { ...state, status, todos: payload };
+    case actionTypes.FETCH_TODOS_FAILURE:
+      return { ...state, status, errorMessage: action.payload.message };
     default:
       return state;
   }

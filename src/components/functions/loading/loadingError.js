@@ -9,8 +9,8 @@ export const errorReducer = (state = {}, action) => {
   return {
     ...state,
     // Store errorMessage
-    // e.g. stores errorMessage when receiving GET_TODOS_FAILURE
-    //      else clear errorMessage when receiving GET_TODOS_REQUEST
+    // e.g. stores errorMessage when receiving FETCH_TODOS_FAILURE
+    //      else clear errorMessage when receiving FETCH_TODOS_REQUEST
     [requestName]: requestState === "FAILURE" ? payload.message : ""
   };
 };

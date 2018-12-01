@@ -1,30 +1,17 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { Provider } from "react-redux";
-import { BrowserRouter, Switch } from "react-router-dom";
-import * as serviceWorker from "src/serviceWorker";
+import dva from "dva";
+import "./index.css";
 
-import rootStore from "src/rootStore";
+// 1. Initialize
+const app = dva();
 
-import Layout from "src/layouts";
-import "src/index.css";
+// 2. Plugins
+// app.use({});
 
-/**
- * @version 1.0.0
- * @author [Tấn nguyễn](https://github.com/tannguyen208)
- * @function App  This is a description of the App. 💋
- */
-function App() {
-  return (
-    <Provider store={rootStore}>
-      <BrowserRouter>
-        <Switch>
-          <Layout />
-        </Switch>
-      </BrowserRouter>
-    </Provider>
-  );
-}
+// 3. Model
+// app.model(require('./models/todo').default);
 
-ReactDOM.render(<App />, document.getElementById("root"));
-serviceWorker.unregister();
+// 4. Router
+app.router(require("./router").default);
+
+// 5. Start
+app.start("#root");

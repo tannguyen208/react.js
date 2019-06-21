@@ -1,30 +1,30 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import { BrowserRouter, Switch } from "react-router-dom";
-import * as serviceWorker from "src/serviceWorker";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-import rootStore from "src/rootStore";
+import configureStore from "./store/configureStore";
+import "./index.css";
 
-import Layout from "src/layouts";
-import "src/index.css";
+import Todo from "./modules/todo/todo.container";
 
 /**
  * @version 1.0.0
  * @author [Tấn nguyễn](https://github.com/tannguyen208)
  * @function App  This is a description of the App. 💋
  */
-function App() {
-  return (
-    <Provider store={rootStore}>
-      <BrowserRouter>
-        <Switch>
-          <Layout />
-        </Switch>
-      </BrowserRouter>
-    </Provider>
-  );
+export class App extends React.Component {
+  render() {
+    return (
+      <Provider store={configureStore}>
+        <BrowserRouter>
+          <Switch>
+            <Route path="/" component={Todo} />
+          </Switch>
+        </BrowserRouter>
+      </Provider>
+    );
+  }
 }
 
 ReactDOM.render(<App />, document.getElementById("root"));
-serviceWorker.unregister();

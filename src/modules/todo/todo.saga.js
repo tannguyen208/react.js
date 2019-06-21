@@ -1,16 +1,19 @@
-import { put, takeLatest } from "redux-saga/effects";
-import * as actionTypes from "../actions/types";
+import { put, delay, takeLatest } from "redux-saga/effects";
+import * as actionTypes from "./todo.actionType";
+import request from "../../utils/request";
 
 function* fetchTodos() {
   try {
-    const response = yield fetch("http://localhost:3001/todos");
-    const responseBody = yield response.json();
+    const response = yield request("https://reqres.in/api/users");
+    delay(2000);
+
     yield put({
       type: actionTypes.FETCH_TODOS_SUCCESS,
       status: "success",
-      payload: responseBody
+      payload: response.data
     });
   } catch (error) {
+    console.log("TCL: function*fetchTodos -> error", error);
     yield put({
       type: actionTypes.FETCH_TODOS_FAILURE,
       status: "error",

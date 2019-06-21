@@ -1,17 +1,34 @@
-class Locale {
-  constructor(language) {
-    this.strings = language;
-    this.subscriptions = [];
+import React from "react";
+import PropTypes from "prop-types";
+import Locale from "./Locale";
+
+const propTypes = {};
+const defaultProps = {};
+const childContextTypes = {
+  locale: PropTypes.object
+};
+
+class LocaleProvider extends React.Component {
+  constructor(props) {
+    super(props);
+    this.locale = new Locale(props.language);
   }
 
-  setLanguage(language) {
-    this.strings = language;
-    this.subscriptions.forEach(cb => cb());
-  }
+  componentWillReceiveProps = nextProps => {
+    this.locale.setLanguage(nextProps.language);
+  };
 
-  subscribe(cb) {
-    this.subscriptions.push(cb);
-  }
+  getChildContext = () => {
+    return { locale: this.locale };
+  };
+
+  render = () => {
+    return <React.Fragment>{this.props.children}</React.Fragment>;
+  };
 }
 
-export default Locale;
+LocaleProvider.propTypes = propTypes;
+LocaleProvider.defaultProps = defaultProps;
+LocaleProvider.childContextTypes = childContextTypes;
+
+export default LocaleProvider;

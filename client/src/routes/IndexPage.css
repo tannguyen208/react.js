@@ -1,0 +1,26 @@
+.normal {
+  font-family: Georgia, sans-serif;
+  margin-top: 3em;
+  text-align: center;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: normal;
+  letter-spacing: -1px;
+}
+
+.welcome {
+  height: 164px;
+  background: url(../assets/yay.jpg) no-repeat center 0;
+  background-size: 164px 148px;
+}
+
+button {
+  margin: 4px;
+  padding: 4px 8px;
+  width: 64px;
+  background: #fff;
+  border-radius: 4px;
+  outline: none;
+}

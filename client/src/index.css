@@ -1,5 +1,28 @@
 html,
 body,
 :global(#root) {
+  margin: 0;
+  padding: 0;
   height: 100%;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #e6e6e6;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding: 0;
 }

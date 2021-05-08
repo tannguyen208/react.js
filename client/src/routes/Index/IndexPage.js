@@ -1,5 +1,7 @@
 import React from "react";
+import { Link } from "dva/router";
 import { connect } from "dva";
+import { Button } from "antd";
 import styles from "./IndexPage.css";
 
 const IndexPage = connect(({ count }) => ({
@@ -15,11 +17,14 @@ const IndexPage = connect(({ count }) => ({
 
   return (
     <div className={styles.normal}>
+      <div>
+        <Link to="/resume" children="Resume" />
+      </div>
       <h1 className={styles.title}>Yay! Welcome to dva!</h1>
       <div className={styles.welcome} />
       <h2>{props.count}</h2>
-      <button onClick={onAdd}>+</button>
-      <button onClick={onMinus}>-</button>
+      <Button onClick={onAdd}>+</Button>
+      <Button onClick={onMinus}>-</Button>
     </div>
   );
 });

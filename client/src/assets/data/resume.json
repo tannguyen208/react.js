@@ -1,0 +1,115 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "resume",
+  "$comment": "Resume of Tan.NA",
+  "contains": {
+    "personal": {
+      "title": "Personal details",
+      "description": {
+        "type": "list",
+        "data": [
+          {
+            "topic": "Name",
+            "content": "Tan Nguyen Anh"
+          },
+          {
+            "topic": "Phone",
+            "content": "+84 357 833 112"
+          },
+          {
+            "type": "link",
+            "topic": "Email",
+            "content": "tanna48pct@gmail.com"
+          },
+          {
+            "type": "link",
+            "topic": "Skype",
+            "content": "tanna48pct@gmail.com"
+          },
+          {
+            "type": "link",
+            "topic": "Github",
+            "content": "github.com/tannguyen208"
+          }
+        ]
+      }
+    },
+    "languages": {
+      "title": "Languages",
+      "description": {
+        "type": "list",
+        "data": [
+          {
+            "topic": "English",
+            "content": "Medium"
+          },
+          {
+            "topic": "Vietnamese",
+            "content": "Mother Tongue"
+          }
+        ]
+      }
+    },
+    "summary": {
+      "title": "Summary",
+      "description": {
+        "type": "list",
+        "data": [
+          "Software Engineer over 2.5 years of experience in developing websites and have been familiar with developing websites using many famous Javascript frameworks and libraries such as Angular, ReactJS, NodeJS…",
+          "Having good analytical abilities, problem-solving techniques, code reviews, clean code, debugging, and excellent good inter-personal.",
+          "Know some popular design patterns that are used on projects."
+        ]
+      }
+    },
+    "highlights": {
+      "title": "Skill Highlights",
+      "description": {
+        "type": "accordion",
+        "data": [
+          {
+            "topic": "Programming languages",
+            "content": [
+              "Javascript",
+              "Dart",
+              "C# .NET basic",
+              "Java basic",
+              "HTML, CSS"
+            ]
+          },
+          {
+            "topic": "Frameworks & platforms",
+            "content": [
+              "ReactJS / AngularJS / NodeJS",
+              "React Native, Flutter",
+              "JQuery / Twitter Bootstrap / Materialize CSS",
+              "ASP.NET MVC / Entity Framework / LINQ to SQL",
+              "RestfulAPI / JSON, XML",
+              "SCSS"
+            ]
+          },
+          {
+            "topic": "Databases",
+            "content": ["SQL Server, MYSQL", "MongoDB"]
+          },
+          {
+            "topic": "Version control",
+            "content": "Git (Git Shell & Github & GitLab)"
+          },
+          {
+            "topic": "IDE",
+            "content": ["VSCode", "Visual Studio 17+", "NetBeans"]
+          },
+          {
+            "topic": "Office skills",
+            "content": "Word, Excel …"
+          }
+        ]
+      }
+    },
+    "experience": {},
+    "projects": {},
+    "education": {},
+    "recognitions": {},
+    "hobbies": {}
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "$id": "themes",
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "readOnly": true,
+  "themes": [
+    {
+      "id": "T_001",
+      "name": "Light",
+      "colors": {
+        "body": "#fafafa",
+        "border": "#fafafa",
+        "buttons": {
+          "inboxBgr": "transparent",
+          "inboxBgrActive": "#e8ecfb",
+          "inboxBgrHover": "#e8ecfb"
+        },
+        "content": "#ffffff",
+        "hover": {
+          "bold": "#eceffb",
+          "default": "#e8ecfb"
+        },
+        "navbar": {
+          "bgr": "#ffffff",
+          "border": "rgba(242, 242, 242, 0.452)",
+          "text": "#bfc7d4"
+        },
+        "popup": {
+          "bgr": "#ffffff",
+          "text": "#32323e"
+        },
+        "primary": "#6266e9",
+        "shadow": {
+          "bold": "08px 58px rgba(0, 0, 0, 0.4), 02px 14px rgba(0, 0, 0, 0.5)",
+          "default": "0 0 3px 3px rgba(62, 103, 184, 0.01), 0 4px 15px rgba(67, 107, 185, 0.03)"
+        },
+        "sidebar": {
+          "bgr": "#fafafa",
+          "text": "#a1a3a7"
+        },
+        "svg": {
+          "fill": "#a1a3a7"
+        },
+        "text": "#a1a3a7",
+        "textTitle": "#566378"
+      },
+      "font": "Roboto-Regular"
+    },
+    {
+      "id": "T_002",
+      "name": "Midnight",
+      "colors": {
+        "body": "#212129",
+        "border": "#151c26",
+        "buttons": {
+          "inboxBgr": "transparent",
+          "inboxBgrActive": "#3c3c4a",
+          "inboxBgrHover": "#3c3c4a"
+        },
+        "content": "#32323e",
+        "hover": {
+          "bold": "#202027",
+          "default": "#3c3c4a"
+        },
+        "navbar": {
+          "bgr": "#272730",
+          "border": "#272730",
+          "text": "#a3a7b2"
+        },
+        "popup": {
+          "bgr": "#202027",
+          "text": "#a3a7b2"
+        },
+        "primary": "#6266e9",
+        "shadow": {
+          "bold": "08px 58px rgba(0, 0, 0, 0.4), 02px 14px rgba(0, 0, 0, 0.5)",
+          "default": "0 0 3px 3px rgba(62, 103, 184, 0.01), 0 4px 15px rgba(67, 107, 185, 0.03)"
+        },
+        "sidebar": {
+          "bgr": "#2d2d38",
+          "text": "#b1b4bc"
+        },
+        "svg": {
+          "fill": "#b1b4bc"
+        },
+        "text": "#e6e6e6",
+        "textTitle": "#e6e6e6"
+      },
+      "font": "Roboto-Regular"
+    }
+  ]
+}

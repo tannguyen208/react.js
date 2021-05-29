@@ -1,0 +1,18 @@
+[
+  {
+    "id": "a18d8583-e46d-49d7-a6eb-27d640c0e978",
+    "createdAt": "2021-06-22T10:29:53.103Z",
+    "username": "tan.na@gmail.com",
+    "password": "____________________",
+    "firstName": "Nguyen Anh",
+    "lastName": "Tan",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
+    "roles": {
+      "Is.Admin": true
+    },
+    "permissions": {
+      "Page.Dashboard": 1,
+      "Page.Private": 521
+    }
+  }
+]

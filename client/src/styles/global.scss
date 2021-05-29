@@ -1,0 +1,31 @@
+:root {
+  --bodyTextSize: 14px;
+  --bodyTextFont: "Roboto-Regular";
+}
+
+body {
+  height: 100vh;
+  overflow: hidden;
+  font-size: var(--bodyTextSize);
+  font-family: var(--bodyTextFont), BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a {
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}

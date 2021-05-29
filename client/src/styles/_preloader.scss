@@ -1,0 +1,62 @@
+.c-preloader-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  border-radius: 20px;
+}
+
+.c-preloader {
+  position: absolute;
+  border: 5px solid;
+  border-radius: 50%;
+
+  &:nth-child(1) {
+    width: 90px;
+    height: 90px;
+    border-color: #fefefe #505050 #fefefe #505050;
+    animation: spin 1000ms alternate infinite;
+  }
+
+  &:nth-child(2) {
+    width: 60px;
+    height: 60px;
+    border-color: #505050 #fefefe #505050 #fefefe;
+    animation: reverseSpin 1000ms linear infinite;
+  }
+
+  &:nth-child(3) {
+    @extend .c-preloader, :nth-child(1);
+
+    width: 30px;
+    height: 30px;
+  }
+
+  &:nth-child(4) {
+    @extend .c-preloader, :nth-child(2);
+
+    width: 10px;
+    height: 10px;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes reverseSpin {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(-360deg);
+  }
+}

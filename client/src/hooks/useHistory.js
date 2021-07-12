@@ -1,4 +1,4 @@
-import { useReducer, useCallback } from 'react'
+import {useReducer, useCallback} from 'react'
 
 // Initial state that we pass into useReducer
 const initialState = {
@@ -12,7 +12,7 @@ const initialState = {
 
 // Our reducer function to handle state changes based on action
 const reducer = (state, action) => {
-  const { past, present, future } = state
+  const {past, present, future} = state
 
   // eslint-disable-next-line default-case
   switch (action.type) {
@@ -35,7 +35,7 @@ const reducer = (state, action) => {
       }
     }
     case 'SET': {
-      const { newPresent } = action
+      const {newPresent} = action
       if (newPresent === present) {
         return state
       }
@@ -46,7 +46,7 @@ const reducer = (state, action) => {
       }
     }
     case 'CLEAR': {
-      const { initialPresent } = action
+      const {initialPresent} = action
       return {
         ...initialState,
         present: initialPresent,
@@ -67,23 +67,23 @@ export function useHistory(initialPresent) {
   // We memoize with useCallback to prevent unnecessary re-renders
   const undo = useCallback(() => {
     if (canUndo) {
-      dispatch({ type: 'UNDO' })
+      dispatch({type: 'UNDO'})
     }
   }, [canUndo, dispatch])
 
   const redo = useCallback(() => {
     if (canRedo) {
-      dispatch({ type: 'REDO' })
+      dispatch({type: 'REDO'})
     }
   }, [canRedo, dispatch])
 
   const set = useCallback(
-    (newPresent) => dispatch({ type: 'SET', newPresent }),
+    (newPresent) => dispatch({type: 'SET', newPresent}),
     [dispatch]
   )
 
   const clear = useCallback(
-    () => dispatch({ type: 'CLEAR', initialPresent }),
+    () => dispatch({type: 'CLEAR', initialPresent}),
     [initialPresent, dispatch]
   )
 

@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useContext, createContext } from 'react'
+import React, {useState, useEffect, useContext, createContext} from 'react'
 import omit from 'lodash/omit'
-import { useLocalStorage } from './useLocalStorage'
+import {useLocalStorage} from './useLocalStorage'
 import AccountApi from 'src/api/account.api'
 import Role from 'src/utils/role'
 
@@ -10,7 +10,7 @@ const $initialToken = null
 
 // Provider component that wraps your app and makes auth object ...
 // ... available to any child component that calls useAuth().
-export function AuthProvider({ children }) {
+export function AuthProvider({children}) {
   const auth = useAuthProvider()
   return <$AuthContext.Provider value={auth}>{children}</$AuthContext.Provider>
 }
@@ -37,7 +37,7 @@ function useAuthProvider() {
 
     try {
       // fake api
-      const { account } = await AccountApi.signIn()
+      const {account} = await AccountApi.signIn()
       if (account.token) {
         _token = account.token
         _account = omit(account, ['token', 'roles', 'permissions'])

@@ -1,4 +1,4 @@
-import { rest } from 'msw'
+import {rest} from 'msw'
 import todoRepo from './data/todos.json'
 
 const _buildUrl = (endpoint) => '/api/v1/' + endpoint

@@ -2,7 +2,7 @@
 import './utils/i18n'
 
 // lib styled
-import 'antd/dist/antd.css';
+import 'antd/dist/antd.css'
 import 'tailwindcss/dist/base.css'
 import 'tailwindcss/dist/components.css'
 import 'tailwindcss/dist/utilities.css'

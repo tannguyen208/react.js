@@ -42,6 +42,6 @@ const config = {
     'jest-watch-typeahead/testname',
   ],
   resetMocks: true,
-};
+}
 
-module.exports = config;
+module.exports = config

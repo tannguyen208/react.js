@@ -1,12 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Route, Redirect } from 'react-router-dom'
-import { IRoute } from 'src/models/route.model'
-import { useAuth } from 'src/hooks/useAuth'
-import { useRouter } from 'src/hooks/useRouter'
-import { routePaths } from 'src/routes/paths'
+import {Route, Redirect} from 'react-router-dom'
+import {IRoute} from 'src/models/route.model'
+import {useAuth} from 'src/hooks/useAuth'
+import {useRouter} from 'src/hooks/useRouter'
+import {routePaths} from 'src/routes/paths'
 
-function PrivateRoute({ children, ...rest }) {
+function PrivateRoute({children, ...rest}) {
   const auth = useAuth()
   const router = useRouter()
 

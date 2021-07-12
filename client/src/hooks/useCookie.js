@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import {useState} from 'react'
 import * as cookieUtil from 'src/utils/cookie'
 
 export function useCookie(key, initialValue) {

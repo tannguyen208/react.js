@@ -1,6 +1,6 @@
-import { useCallback, useState } from 'react'
-import { useBetween } from 'use-between'
-import { produce } from 'immer'
+import {useCallback, useState} from 'react'
+import {useBetween} from 'use-between'
+import {produce} from 'immer'
 import * as storage from 'src/utils/storage'
 
 const storageKey = 'theme'
@@ -25,7 +25,7 @@ const useSharedTheme = () => {
   const fetchThemes = useCallback(() => {
     const __func = async () => {
       const localTheme = storage.get(storageKey, null)
-      const { default: response } = await import('src/assets/themes.json')
+      const {default: response} = await import('src/assets/themes.json')
       const selectedTheme =
         response.themes.find((theme) => theme.id === localTheme) ||
         response.themes[0]
@@ -44,7 +44,7 @@ const useSharedTheme = () => {
     __func()
   }, [])
 
-  return { ...state, changeTheme, fetchThemes }
+  return {...state, changeTheme, fetchThemes}
 }
 
 export const useTheme = () => useBetween(useSharedTheme)

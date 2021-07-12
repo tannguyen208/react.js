@@ -1,5 +1,5 @@
 import React from 'react'
-import { __DEV__ } from 'src/utils/isEnv'
+import {__DEV__} from 'src/utils/isEnv'
 
 let appReady = Promise.resolve()
 

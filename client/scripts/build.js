@@ -65,7 +65,7 @@ const config = configFactory(__env__.PROD)
 
 // We require that you explicitly set browsers and do not fall back to
 // browserslist defaults.
-const { checkBrowsers } = require('react-dev-utils/browsersHelper')
+const {checkBrowsers} = require('react-dev-utils/browsersHelper')
 checkBrowsers(paths.appPath, isInteractive)
   .then(() => {
     // First, read the current file sizes in build directory.
@@ -82,8 +82,8 @@ checkBrowsers(paths.appPath, isInteractive)
     return build(previousFileSizes)
   })
   .then(
-    ({ stats, previousFileSizes, warnings }) => {
-    console.log('♎ ~ previousFileSizes', previousFileSizes);
+    ({stats, previousFileSizes, warnings}) => {
+      console.log('♎ ~ previousFileSizes', previousFileSizes)
       if (warnings.length) {
         console.log(chalk.yellow('Compiled with warnings.\n'))
         console.log(warnings.join('\n\n'))
@@ -174,7 +174,7 @@ function build(previousFileSizes) {
         })
       } else {
         messages = formatWebpackMessages(
-          stats.toJson({ all: false, warnings: true, errors: true })
+          stats.toJson({all: false, warnings: true, errors: true})
         )
       }
       if (messages.errors.length) {

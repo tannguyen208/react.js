@@ -1,7 +1,7 @@
 import React from 'react'
-import { IRoute } from 'src/models/route.model'
-import { routePaths } from 'src/routes/paths'
-import { isGuard } from 'src/utils/isGuard'
+import {IRoute} from 'src/models/route.model'
+import {routePaths} from 'src/routes/paths'
+import {isGuard} from 'src/utils/isGuard'
 import PermissionConst from 'src/constants/permission.const'
 import Role from 'src/utils/role'
 

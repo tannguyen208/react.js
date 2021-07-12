@@ -1,4 +1,4 @@
-import { join, map, split, toString, upperFirst } from 'lodash'
+import {join, map, split, toString, upperFirst} from 'lodash'
 
 /**
  * Converts the first character of every word in `string` to upper case and the remaining
@@ -22,4 +22,4 @@ function titleCase(string) {
   )
 }
 
-export { titleCase }
+export {titleCase}

@@ -1,6 +1,6 @@
 import axios from 'axios'
 import Qs from 'query-string'
-import { __DEV__ } from 'src/utils/isEnv'
+import {__DEV__} from 'src/utils/isEnv'
 
 const logger = {
   request: (request) =>

@@ -1,7 +1,7 @@
 import React from 'react'
-import { useAuth } from 'src/hooks/useAuth'
-import { useRouter } from 'src/hooks/useRouter'
-import { routePaths } from 'src/routes/paths'
+import {useAuth} from 'src/hooks/useAuth'
+import {useRouter} from 'src/hooks/useRouter'
+import {routePaths} from 'src/routes/paths'
 import Scrollbar from 'src/components/scrollbar'
 import Button from 'src/components/button'
 import TodoApi from 'src/api/todo.api'
@@ -40,7 +40,9 @@ function Dashboard() {
       </div>
 
       <div className="flex flex-row items-center justify-center">
-        <Button onClick={onGoPublic} className="mr-1">Public</Button>
+        <Button onClick={onGoPublic} className="mr-1">
+          Public
+        </Button>
         <Button onClick={onGoPrivate}>Private</Button>
       </div>
       <Button onClick={onSignOut} className="my-1">
@@ -50,9 +52,12 @@ function Dashboard() {
       <div className="p-2 bg-gray-100 rounded-xl">
         <h3 className="text-lg font-bold">Todos</h3>
         <div className="flex-1">
-          <Scrollbar style={{ height: 300 }}>
+          <Scrollbar style={{height: 300}}>
             {todos.map((todo: Todo) => (
-              <div key={todo.id} className="p-1 mt-1 bg-white rounded cursor-pointer flex">
+              <div
+                key={todo.id}
+                className="p-1 mt-1 bg-white rounded cursor-pointer flex"
+              >
                 <div className="w-10 flex items-center justify-center">
                   <Choose>
                     <When condition={todo.done}>🔳</When>

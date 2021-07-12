@@ -1,9 +1,9 @@
-import React, { useRef, useEffect, useCallback } from 'react'
+import React, {useRef, useEffect, useCallback} from 'react'
 import PropTypes from 'prop-types'
 import PerfectScrollbar from 'perfect-scrollbar'
 import classNames from 'classnames'
 import isEqual from 'lodash/isEqual'
-import { useIsMounted } from 'src/hooks/useIsMounted'
+import {useIsMounted} from 'src/hooks/useIsMounted'
 import './Scrollbar.scss'
 
 const events = {

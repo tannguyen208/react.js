@@ -1,7 +1,7 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import { useRouter } from 'src/hooks/useRouter'
-import { routePaths } from 'src/routes/paths'
+import {Link} from 'react-router-dom'
+import {useRouter} from 'src/hooks/useRouter'
+import {routePaths} from 'src/routes/paths'
 
 function Private(props) {
   const router = useRouter()

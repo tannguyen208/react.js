@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Helmet } from 'react-helmet'
+import {Helmet} from 'react-helmet'
 
-function SEO({ title }) {
+function SEO({title}) {
   return (
     <Helmet>
       <title>{title}</title>

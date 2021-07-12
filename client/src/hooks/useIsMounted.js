@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react'
+import {useRef, useEffect} from 'react'
 
 export function useIsMounted() {
   const _ref = useRef(false)

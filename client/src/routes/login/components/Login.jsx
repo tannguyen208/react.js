@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
-import { useAuth } from 'src/hooks/useAuth'
-import { useRouter } from 'src/hooks/useRouter'
-import { routePaths } from 'src/routes/paths'
-import { delay } from 'src/utils/delay'
+import React, {useState} from 'react'
+import {useAuth} from 'src/hooks/useAuth'
+import {useRouter} from 'src/hooks/useRouter'
+import {routePaths} from 'src/routes/paths'
+import {delay} from 'src/utils/delay'
 
 function Login() {
   const auth = useAuth()

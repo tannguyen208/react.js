@@ -1,9 +1,9 @@
 import React from 'react'
-import { Route, Switch, Redirect } from 'react-router-dom'
+import {Route, Switch, Redirect} from 'react-router-dom'
 import Preloader from 'src/components/preloader'
 import PrivateRoute from 'src/components/privateRoute'
-import { IRoute } from 'src/models/route.model'
-import { routePaths } from './paths'
+import {IRoute} from 'src/models/route.model'
+import {routePaths} from './paths'
 import omit from 'lodash/omit'
 
 const routes: IRoute[] = [
@@ -61,7 +61,8 @@ function AppRouter() {
     ])
 
     // checking is root or * route
-    if ((routePaths.isRoot(path) || routePaths.isNotFound(path)) && redirectTo) {
+    let pathIs = routePaths.isRoot(path) || routePaths.isNotFound(path)
+    if (pathIs && redirectTo) {
       return (
         <RouteParser exact={routePaths.isRoot(path)} {...routeParserProps}>
           <Redirect to={redirectTo} />
@@ -72,7 +73,7 @@ function AppRouter() {
     // child route
     return (
       <RouteParser {...routeParserProps}>
-        <React.Suspense fallback={<Fallback by={`Route:: ${key}`}/>}>
+        <React.Suspense fallback={<Fallback by={`Route:: ${key}`} />}>
           <Component>
             <If condition={childRoutes && childRoutes.length > 0}>
               <Switch>

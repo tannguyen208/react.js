@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { __DEV__ } from 'src/utils/isEnv'
+import {__DEV__} from 'src/utils/isEnv'
 
-function Preloader({ by }) {
+function Preloader({by}) {
   if (__DEV__) {
     console.log('Preloader render by: ', by)
   }

@@ -1,4 +1,4 @@
-import { rest } from 'msw'
+import {rest} from 'msw'
 import omit from 'lodash/omit'
 import accountRepo from './data/accounts.json'
 
@@ -7,7 +7,8 @@ const _buildUrl = (endpoint) => '/api/v1/' + endpoint
 export const accountHandlers = [
   // sign in
   rest.post(_buildUrl('signIn'), (req, res, ctx) => {
-    const account = accountRepo.find((acc) => acc.username === req.body.username) || {}
+    const account =
+      accountRepo.find((acc) => acc.username === req.body.username) || {}
 
     return res(
       // Respond with a 200 status code
@@ -29,7 +30,10 @@ export const accountHandlers = [
   // check sign in
   rest.post(_buildUrl('checkSignIn'), (req, res, ctx) => {
     // check user's authentication in the session
-    const account = accountRepo.find((acc) => acc.token === req.headers.get('Authorization')) || {}
+    const account =
+      accountRepo.find(
+        (acc) => acc.token === req.headers.get('Authorization')
+      ) || {}
     return res(
       // Respond with a 200 status code
       ctx.status(200),

@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, {useState, useEffect} from 'react'
 import isEqual from 'lodash/isEqual'
-import { useTheme } from 'src/hooks/useTheme'
+import {useTheme} from 'src/hooks/useTheme'
 import AccountApi from 'src/api/account.api'
 import Role from 'src/utils/role'
 
 function App(props) {
-  const { themeLoaded, fetchThemes } = useTheme()
+  const {themeLoaded, fetchThemes} = useTheme()
   const [loaded, setLoaded] = useState(false)
 
   useEffect(() => {
@@ -14,7 +14,7 @@ function App(props) {
 
   useEffect(() => {
     const checkRole = async () => {
-      const { account } = await AccountApi.checkSignIn()
+      const {account} = await AccountApi.checkSignIn()
       if (account.username) {
         // set roles
         Role.setRoles(account.roles)

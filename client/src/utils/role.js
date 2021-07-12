@@ -69,7 +69,7 @@ Role.getRoles = function () {
 /**
  * Get global permission variables
  * @param {string} permissionKey
- * @return {number} 
+ * @return {number}
  * @default 0
  */
 Role.getPermissionBy = function (permissionKey) {

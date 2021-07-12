@@ -1,5 +1,5 @@
-import { useEffect } from 'react'
-import { withRouter } from 'react-router-dom'
+import {useEffect} from 'react'
+import {withRouter} from 'react-router-dom'
 
 /**
  * @param {object} props

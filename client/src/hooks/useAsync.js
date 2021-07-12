@@ -1,5 +1,5 @@
-import { useEffect, useReducer, useCallback } from 'react'
-import { produce } from 'immer'
+import {useEffect, useReducer, useCallback} from 'react'
+import {produce} from 'immer'
 
 export const ASYNC_IDLE_STATUS = '@status/idle'
 export const ASYNC_PENDING_STATUS = '@status/pending'
@@ -36,7 +36,7 @@ const reducer = (state, action) => {
   }
 }
 
-export function useAsync(asyncFunction, { immediate = true }) {
+export function useAsync(asyncFunction, {immediate = true}) {
   const [state, dispatch] = useReducer(reducer, initialState)
 
   // The execute function wraps asyncFunction and
@@ -44,14 +44,14 @@ export function useAsync(asyncFunction, { immediate = true }) {
   // useCallback ensures the below useEffect is not called
   // on every render, but only if asyncFunction changes.
   const execute = useCallback(() => {
-    dispatch({ type: ASYNC_PENDING_STATUS })
+    dispatch({type: ASYNC_PENDING_STATUS})
 
     return asyncFunction()
       .then((payload) => {
-        dispatch({ type: ASYNC_SUCCESS_STATUS, payload })
+        dispatch({type: ASYNC_SUCCESS_STATUS, payload})
       })
       .catch((error) => {
-        dispatch({ type: ASYNC_FAILURE_STATUS, payload: error })
+        dispatch({type: ASYNC_FAILURE_STATUS, payload: error})
       })
   }, [asyncFunction])
 

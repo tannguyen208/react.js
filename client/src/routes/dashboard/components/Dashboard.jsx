@@ -4,13 +4,16 @@ import {useRouter} from 'src/hooks/useRouter'
 import {routePaths} from 'src/routes/paths'
 import Scrollbar from 'src/components/scrollbar'
 import Button from 'src/components/button'
-import TodoApi from 'src/api/todo.api'
 import Todo from 'src/models/todo.model'
+import Input from 'src/components/input'
+import RouteLeavingGuard from 'src/components/routeLeavingGuard'
+import TodoApi from 'src/api/todo.api'
 
 function Dashboard() {
   const auth = useAuth()
   const router = useRouter()
   const [todos, setTodos] = React.useState([])
+  const [textSearch, setTextSearch] = React.useState('remove text for navigate.')
 
   React.useEffect(() => {
     const fetchTodo = async () => {
@@ -38,6 +41,24 @@ function Dashboard() {
       <div className="mb-5">
         <h1>Dashboard</h1>
       </div>
+
+      <RouteLeavingGuard
+        when={textSearch.length > 0}
+        navigate={router.history.push}
+        shouldBlockNavigation={(location) => {
+          return true
+        }}
+      />
+      <Choose>
+        <When condition={textSearch.length > 0}>Editing?</When>
+        <Otherwise>Nope</Otherwise>
+      </Choose>
+      <Input
+        value={textSearch}
+        onChange={(e) => setTextSearch(e.target.value)}
+      />
+      
+      <br />
 
       <div className="flex flex-row items-center justify-center">
         <Button onClick={onGoPublic} className="mr-1">

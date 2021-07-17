@@ -1,5 +1,3 @@
-import app from './devTools' // for development
-
 import React from 'react'
 import ReactDOM from 'react-dom'
 import {Provider} from 'react-redux'
@@ -10,6 +8,7 @@ import {store, persistor} from './redux/store'
 import AppRouter from './routes/routes'
 import Preloader from './components/preloader'
 import reportWebVitals from './reportWebVitals'
+import frame from './frame' // setup frame
 import './bootstrap'
 
 function renderApp() {
@@ -33,5 +32,5 @@ function renderApp() {
   )
 }
 
-app.then(renderApp)
+frame.then(renderApp)
 reportWebVitals()

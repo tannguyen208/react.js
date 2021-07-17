@@ -1,14 +1,18 @@
+/* eslint-disable no-console */
 import axios from 'axios'
 import Qs from 'query-string'
 import {__DEV__} from 'src/utils/isEnv'
 
 const logger = {
-  request: (request) =>
-    console.log('%c Request: ' + request.url, logger.ideally, request),
-  requestSuccess: (response) =>
-    console.log('%c Request Success:', logger.success, response),
-  requestFailure: (message) =>
-    console.error('%c Request Failure:', logger.failure, message),
+  request(request) {
+    console.log(`%c Request: ${request.url}`, logger.ideally, request)
+  },
+  requestSuccess(response) {
+    console.log('%c Request Success:', logger.success, response)
+  },
+  requestFailure(message) {
+    console.error('%c Request Failure:', logger.failure, message)
+  },
 }
 logger.ideally = 'color: #bd06ba; font-weight: bold; font-size: 13px'
 logger.success = 'color: #4caf50; font-weight: bold; font-size: 13px'
@@ -38,10 +42,6 @@ http.interceptors.request.use((config) => {
 http.interceptors.response.use(
   (response) => {
     if (__DEV__) logger.requestSuccess(response)
-
-    if (response && response.data) {
-      return response.data
-    }
 
     return response
   },

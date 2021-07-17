@@ -1,5 +1,4 @@
-'use strict'
-
+// @ts-check
 const __env__ = require('../config/enum').environment
 
 const modeBuilder = process.argv.find((arg) => arg.startsWith('--mode='))
@@ -30,8 +29,10 @@ process.on('unhandledRejection', (err) => {
 require('../config/env')
 
 const path = require('path')
+// @ts-ignore
 const chalk = require('react-dev-utils/chalk')
 const fs = require('fs-extra')
+// @ts-ignore
 const bfj = require('bfj')
 const webpack = require('webpack')
 const configFactory = require('../config/webpack.config')
@@ -65,6 +66,7 @@ const config = configFactory(__env__.PROD)
 
 // We require that you explicitly set browsers and do not fall back to
 // browserslist defaults.
+// @ts-ignore
 const {checkBrowsers} = require('react-dev-utils/browsersHelper')
 checkBrowsers(paths.appPath, isInteractive)
   .then(() => {
@@ -85,19 +87,23 @@ checkBrowsers(paths.appPath, isInteractive)
     ({stats, previousFileSizes, warnings}) => {
       console.log('♎ ~ previousFileSizes', previousFileSizes)
       if (warnings.length) {
+        // @ts-ignore
         console.log(chalk.yellow('Compiled with warnings.\n'))
         console.log(warnings.join('\n\n'))
         console.log(
           '\nSearch for the ' +
+            // @ts-ignore
             chalk.underline(chalk.yellow('keywords')) +
             ' to learn more about each warning.'
         )
         console.log(
           'To ignore, add ' +
+            // @ts-ignore
             chalk.cyan('// eslint-disable-next-line') +
             ' to the line before.\n'
         )
       } else {
+        // @ts-ignore
         console.log(chalk.green('Compiled successfully.\n'))
       }
 
@@ -127,12 +133,14 @@ checkBrowsers(paths.appPath, isInteractive)
       const tscCompileOnError = process.env.TSC_COMPILE_ON_ERROR === 'true'
       if (tscCompileOnError) {
         console.log(
+          // @ts-ignore
           chalk.yellow(
             'Compiled with the following type errors (you may want to check these before deploying your app):\n'
           )
         )
         printBuildError(err)
       } else {
+        // @ts-ignore
         console.log(chalk.red('Failed to compile.\n'))
         printBuildError(err)
         process.exit(1)
@@ -150,6 +158,7 @@ checkBrowsers(paths.appPath, isInteractive)
 function build(previousFileSizes) {
   console.log('Creating an optimized production build...')
 
+  // @ts-ignore
   const compiler = webpack(config)
   return new Promise((resolve, reject) => {
     compiler.run((err, stats) => {
@@ -168,6 +177,7 @@ function build(previousFileSizes) {
             err['postcssNode'].selector
         }
 
+        // @ts-ignore
         messages = formatWebpackMessages({
           errors: [errMessage],
           warnings: [],
@@ -192,6 +202,7 @@ function build(previousFileSizes) {
         messages.warnings.length
       ) {
         console.log(
+          // @ts-ignore
           chalk.yellow(
             '\nTreating warnings as errors because process.env.CI = true.\n' +
               'Most CI servers set it automatically.\n'

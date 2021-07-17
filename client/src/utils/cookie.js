@@ -4,19 +4,12 @@ export function set(name, value, options) {
     path: '/',
     ...options,
   }
-
+  const encode = encodeURIComponent(value)
   const expires = new Date(
     Date.now() + optionsWithDefaults.days * 864e5
   ).toUTCString()
 
-  document.cookie =
-    name +
-    '=' +
-    encodeURIComponent(value) +
-    '; expires=' +
-    expires +
-    '; path=' +
-    optionsWithDefaults.path
+  document.cookie = `${name}=${encode}; expires=${expires}; path=${optionsWithDefaults.path}`
 }
 
 export function get(name, initialValue = '') {

@@ -1,8 +1,20 @@
-/* eslint-disable react/prop-types */
 import React, {useEffect, useState} from 'react'
+import PropTypes from 'prop-types'
 import {Prompt} from 'react-router-dom'
 import Button from 'src/components/button'
 import Modal from 'src/components/modal'
+import {noop} from 'src/utils/noop'
+
+const propTypes = {
+  navigate: PropTypes.func,
+  when: PropTypes.bool.isRequired,
+  shouldBlockNavigation: PropTypes.func,
+}
+
+const defaultProps = {
+  navigate: noop,
+  shouldBlockNavigation: noop,
+}
 
 function RouteLeavingGuard(props) {
   const {navigate, when, shouldBlockNavigation} = props
@@ -44,7 +56,9 @@ function RouteLeavingGuard(props) {
 
   useEffect(() => {
     if (confirmedNavigation) {
-      navigate(lastLocation.pathname)
+      const {pathname} = localStorage
+
+      navigate(pathname)
       setConfirmedNavigation(false)
     }
   }, [confirmedNavigation])
@@ -71,5 +85,8 @@ function RouteLeavingGuard(props) {
     </>
   )
 }
+
+RouteLeavingGuard.propTypes = propTypes
+RouteLeavingGuard.defaultProps = defaultProps
 
 export default RouteLeavingGuard

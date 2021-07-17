@@ -12,7 +12,7 @@ function Public() {
     <div className="err-container text-center">
       <div className="err">
         <h1>Public</h1>
-        <div onClick={onGoBack}>Go Back</div>
+        <div onClick={onGoBack} aria-hidden>Go Back</div>
       </div>
     </div>
   )

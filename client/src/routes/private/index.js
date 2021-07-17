@@ -1,8 +1,7 @@
 import React from 'react'
-import {IRoute} from 'src/models/route.model'
 import {routePaths} from 'src/routes/paths'
 
-const configuration: IRoute = {
+const configuration = {
   key: routePaths.private.key,
   path: routePaths.private.path,
   exact: true,

@@ -33,6 +33,9 @@ const reducer = (state, action) => {
         draft.error = action.payload
         draft.status = ASYNC_FAILURE_STATUS
       })
+
+    default:
+      return state
   }
 }
 

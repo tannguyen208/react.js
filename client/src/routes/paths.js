@@ -1,6 +1,4 @@
-import {IPath} from 'src/models/route.model'
-
-export const routePaths: {[key: string]: IPath} = {
+export const routePaths = {
   // root paths
   root: {key: 'RP', path: '/'},
   main: {key: 'RP.Home', path: '/_:home'},

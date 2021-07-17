@@ -5,6 +5,7 @@ import AccountApi from 'src/api/account.api'
 import Role from 'src/utils/role'
 
 function App(props) {
+  const {children} = props
   const {themeLoaded, fetchThemes} = useTheme()
   const [loaded, setLoaded] = useState(false)
 
@@ -14,11 +15,11 @@ function App(props) {
 
   useEffect(() => {
     const checkRole = async () => {
-      const {account} = await AccountApi.checkSignIn()
-      if (account.username) {
+      const {data} = await AccountApi.checkSignIn()
+      if (data.account.username) {
         // set roles
-        Role.setRoles(account.roles)
-        Role.setPermissions(account.permissions)
+        Role.setRoles(data.account.roles)
+        Role.setPermissions(data.account.permissions)
       }
 
       setLoaded(true)
@@ -29,7 +30,7 @@ function App(props) {
 
   return (
     <Choose>
-      <When condition={loaded && themeLoaded}>{props.children}</When>
+      <When condition={loaded && themeLoaded}>{children}</When>
       <Otherwise>Loading ...</Otherwise>
     </Choose>
   )

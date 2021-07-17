@@ -1,57 +1,54 @@
 import React, {useState, useEffect, useContext, createContext} from 'react'
 import omit from 'lodash/omit'
-import {useLocalStorage} from './useLocalStorage'
 import AccountApi from 'src/api/account.api'
 import Role from 'src/utils/role'
+import {useLocalStorage} from './useLocalStorage'
 
-const $AuthContext = createContext()
-const $initialAccount = {}
-const $initialToken = null
+const AuthContext = createContext(undefined)
+const initialAccount = {}
+const initialToken = null
 
 // Provider component that wraps your app and makes auth object ...
 // ... available to any child component that calls useAuth().
 export function AuthProvider({children}) {
   const auth = useAuthProvider()
-  return <$AuthContext.Provider value={auth}>{children}</$AuthContext.Provider>
+  // eslint-disable-next-line react/jsx-filename-extension
+  return <AuthContext.Provider value={auth}>{children}</AuthContext.Provider>
 }
 
 // Hook for child components to get the auth object ...
 // ... and re-render when it changes.
-export const useAuth = () => {
-  return useContext($AuthContext)
-}
+export const useAuth = () => useContext(AuthContext)
 
 // Provider hook that creates auth object and handles state
 function useAuthProvider() {
   // use modal Account if applier
-  const [token, setToken] = useLocalStorage('token', $initialToken)
-  const [account, setAccount] = useState($initialAccount)
+  const [_token, setToken] = useLocalStorage('token', initialToken)
+  const [_account, setAccount] = useState(initialAccount)
 
-  const isAuthenticated = () => {
-    return !!token
-  }
+  const isAuthenticated = () => !!_token
 
   const signIn = async () => {
-    let _token = $initialToken
-    let _account = $initialAccount
+    let token = initialToken
+    let account = initialAccount
 
     try {
       // fake api
-      const {account} = await AccountApi.signIn()
-      if (account.token) {
-        _token = account.token
-        _account = omit(account, ['token', 'roles', 'permissions'])
-        Role.setRoles(account.roles)
-        Role.setPermissions(account.permissions)
+      const {data} = await AccountApi.signIn()
+      if (data.account.token) {
+        token = data.account.token
+        account = omit(account, ['token', 'roles', 'permissions'])
+        Role.setRoles(data.account.roles)
+        Role.setPermissions(data.account.permissions)
       }
     } catch (error) {
       //
     } finally {
-      setToken(_token)
-      setAccount(_account)
+      setToken(token)
+      setAccount(account)
     }
 
-    return !!_token
+    return !!token
   }
 
   const signOut = async () => {
@@ -60,8 +57,8 @@ function useAuthProvider() {
     } catch (error) {
       //
     } finally {
-      setToken($initialToken)
-      setAccount($initialAccount)
+      setToken(initialToken)
+      setAccount(initialAccount)
     }
   }
 
@@ -72,7 +69,7 @@ function useAuthProvider() {
   useEffect(() => {}, [])
 
   return {
-    account,
+    account: _account,
     isAuthenticated,
     signIn,
     signOut,

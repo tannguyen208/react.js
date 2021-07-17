@@ -2,11 +2,10 @@ import React from 'react'
 import {Route, Switch, Redirect} from 'react-router-dom'
 import Preloader from 'src/components/preloader'
 import PrivateRoute from 'src/components/privateRoute'
-import {IRoute} from 'src/models/route.model'
-import {routePaths} from './paths'
 import omit from 'lodash/omit'
+import {routePaths} from './paths'
 
-const routes: IRoute[] = [
+const routes = [
   {
     key: routePaths.root.key,
     path: routePaths.root.path,
@@ -40,7 +39,7 @@ const routes: IRoute[] = [
 ]
 
 function AppRouter() {
-  const RenderRoute = React.useCallback((route): IRoute => {
+  const RenderRoute = React.useCallback((route) => {
     const {
       key,
       path,
@@ -61,7 +60,7 @@ function AppRouter() {
     ])
 
     // checking is root or * route
-    let pathIs = routePaths.isRoot(path) || routePaths.isNotFound(path)
+    const pathIs = routePaths.isRoot(path) || routePaths.isNotFound(path)
     if (pathIs && redirectTo) {
       return (
         <RouteParser exact={routePaths.isRoot(path)} {...routeParserProps}>

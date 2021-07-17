@@ -3,7 +3,7 @@
  * Checking for args is boolean or function => boolean
  *
  * @format
- * @default false
+ * @default {boolean} false
  */
 export function isGuard(...args) {
   const isBool = (key) => typeof key === 'boolean'

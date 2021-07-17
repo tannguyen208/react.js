@@ -1,10 +1,10 @@
-import React from 'react'
+import React, {useCallback} from 'react'
 import {useRouter} from 'src/hooks/useRouter'
 
 function Public() {
   const router = useRouter()
 
-  const onGoBack = React.useCallback(() => {
+  const onGoBack = useCallback(() => {
     router.history.goBack()
   }, [])
 

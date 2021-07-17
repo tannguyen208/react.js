@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useState, useCallback} from 'react'
 import {useAuth} from 'src/hooks/useAuth'
 import {useRouter} from 'src/hooks/useRouter'
 import {routePaths} from 'src/routes/paths'
@@ -12,10 +12,10 @@ import TodoApi from 'src/api/todo.api'
 function Dashboard() {
   const auth = useAuth()
   const router = useRouter()
-  const [todos, setTodos] = React.useState([])
-  const [textSearch, setTextSearch] = React.useState('')
+  const [todos, setTodos] = useState([])
+  const [textSearch, setTextSearch] = useState('')
 
-  React.useEffect(() => {
+  useEffect(() => {
     const fetchTodo = async () => {
       const {data} = await TodoApi.getAll()
       setTodos(data.todos.map((todo) => new Todo(todo)))
@@ -24,15 +24,15 @@ function Dashboard() {
     fetchTodo()
   }, [])
 
-  const onSignOut = React.useCallback(() => {
+  const onSignOut = useCallback(() => {
     auth.signOut()
   }, [])
 
-  const onGoPublic = React.useCallback(() => {
+  const onGoPublic = useCallback(() => {
     router.push(routePaths.public.path)
   }, [])
 
-  const onGoPrivate = React.useCallback(() => {
+  const onGoPrivate = useCallback(() => {
     router.push(routePaths.private.path)
   }, [])
 

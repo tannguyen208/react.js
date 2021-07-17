@@ -1,3 +1,10 @@
+/**
+ * Set value to cookie
+ *
+ * @param {string} name Key saving cookie
+ * @param {string} value Value saving cookie
+ * @param {Object} options
+ */
 export function set(name, value, options) {
   const optionsWithDefaults = {
     days: 7,
@@ -12,6 +19,13 @@ export function set(name, value, options) {
   document.cookie = `${name}=${encode}; expires=${expires}; path=${optionsWithDefaults.path}`
 }
 
+/**
+ * Get value by name
+ *
+ * @param {string} name Name of cookie
+ * @param {string} initialValue Return if cookie not found
+ * @returns string
+ */
 export function get(name, initialValue = '') {
   const value = document.cookie.split('; ').reduce((acc, cur) => {
     const parts = cur.split('=')

@@ -2,6 +2,7 @@ import http from './http'
 
 const AccountApi = {
   /**
+   * Sign in
    *
    * @returns http response
    */
@@ -12,6 +13,7 @@ const AccountApi = {
   },
 
   /**
+   * Sign out
    *
    * @returns http response
    */
@@ -20,6 +22,7 @@ const AccountApi = {
   },
 
   /**
+   * Checking login
    *
    * @returns http response
    */

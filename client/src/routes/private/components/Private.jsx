@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useCallback} from 'react'
 import {Link} from 'react-router-dom'
 import {useRouter} from 'src/hooks/useRouter'
 import {routePaths} from 'src/routes/paths'
@@ -7,7 +7,7 @@ function Private(props) {
   const {children} = props
   const router = useRouter()
 
-  const onGoBack = React.useCallback(() => {
+  const onGoBack = useCallback(() => {
     router.history.goBack()
   }, [])
 

@@ -54,6 +54,7 @@ Role.getInstance = function () {
 
 /**
  * Saving global roles variables
+ *
  * @param {Object} role
  */
 Role.setRoles = function (role = {}) {
@@ -62,6 +63,7 @@ Role.setRoles = function (role = {}) {
 
 /**
  * Saving global permissions variables
+ *
  * @param {Object} permissions
  */
 Role.setPermissions = function (permissions = {}) {
@@ -70,6 +72,7 @@ Role.setPermissions = function (permissions = {}) {
 
 /**
  * Get global roles variables
+ *
  * @return {Object} role
  */
 Role.getRoles = function (...args) {
@@ -85,6 +88,7 @@ Role.getRoles = function (...args) {
 
 /**
  * Get global permission variables
+ *
  * @param {string} permissionKey
  * @return {number}
  * @default 0
@@ -96,6 +100,7 @@ Role.getPermissionBy = function (permissionKey) {
 
 /**
  * Get global permissions variables
+ *
  * @return {Object} permissions
  */
 Role.getPermissions = function (...args) {
@@ -112,9 +117,12 @@ Role.getPermissions = function (...args) {
 
 /**
  * Convert binary string to number
- * (ex): 10011 => 19
- * @param {string} binary 0001010
+ *
+ * @param {string} binary
  * @returns number
+ * @example
+ *
+ * 10011 => 19
  */
 Role.convertToNumber = function (binary) {
   return parseInt(binary, 2)
@@ -122,9 +130,12 @@ Role.convertToNumber = function (binary) {
 
 /**
  * Convert number to binary string
- * (ex): 19 => 10011
+ *
  * @param {number} number
- * @returns array
+ * @returns {string} binary string with length default is 16
+ * @example
+ *
+ * 19 => 10011
  */
 Role.convertToBinary = function (number, length = 16) {
   return parseInt(number.toString()).toString(2).padStart(length, '0')
@@ -132,8 +143,9 @@ Role.convertToBinary = function (number, length = 16) {
 
 /**
  * Check has permission
+ *
  * @param {number} number Number from API
- * @returns boolean
+ * @returns {Function} boolean
  */
 Role.hasPermission = function (number) {
   if (!number) {
@@ -142,6 +154,7 @@ Role.hasPermission = function (number) {
   }
 
   const binaryNum = Role.convertToBinary(number)
+
   return function (numberOfPermissions) {
     const binaryPms = Role.convertToBinary(numberOfPermissions, 0)
 
@@ -155,6 +168,7 @@ Role.hasPermission = function (number) {
 
 /**
  * Summary all number
+ *
  * @param {number[]} args
  * @returns number
  */

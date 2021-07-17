@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useCallback} from 'react'
 import {Route, Redirect} from 'react-router-dom'
 import {useAuth} from 'src/hooks/useAuth'
 import {useRouter} from 'src/hooks/useRouter'
@@ -8,7 +8,7 @@ function PrivateRoute({children, ...rest}) {
   const auth = useAuth()
   const router = useRouter()
 
-  const renderRoute = React.useCallback(
+  const renderRoute = useCallback(
     (widget) => <Route {...rest}>{widget}</Route>,
     [rest]
   )

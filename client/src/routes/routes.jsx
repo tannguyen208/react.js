@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useCallback} from 'react'
 import {Route, Switch, Redirect} from 'react-router-dom'
 import Preloader from 'src/components/preloader'
 import PrivateRoute from 'src/components/privateRoute'
@@ -39,7 +39,7 @@ const routes = [
 ]
 
 function AppRouter() {
-  const RenderRoute = React.useCallback((route) => {
+  const RenderRoute = useCallback((route) => {
     const {
       key,
       path,

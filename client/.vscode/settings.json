@@ -1,5 +1,7 @@
 {
   "eslint.nodePath": "../.eslintrc.js",
+  "js/ts.implicitProjectConfig.checkJs": true,
+  "javascript.validate.enable": false,
   "cSpell.words": [
     "antd",
     "immer",

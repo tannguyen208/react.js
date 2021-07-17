@@ -25,11 +25,12 @@ export function useRouter() {
 
   // Return our custom router object
   // Memoize so that a new object is only returned if something changes
-  return useMemo(() => {
-    return {
+  return useMemo(
+    () => ({
       // override query-string functions
       // docs: https://www.npmjs.com/package/query-string
-      stringify: function (obj: Qs.UrlObject) {
+      stringify(obj) {
+        // @ts-ignore
         return Qs.stringify(obj, queryConfig)
       },
       // override react-router functions
@@ -43,6 +44,7 @@ export function useRouter() {
       // so that they can be used interchangeably.
       // Example: /:topic?sort=popular -> { topic: "react", sort: "popular" }
       query: {
+        // @ts-ignore
         ...Qs.parse(location.search, queryConfig), // Convert string to object
         ...params,
       },
@@ -51,6 +53,7 @@ export function useRouter() {
       match,
       location,
       history,
-    }
-  }, [params, match, location, history])
+    }),
+    [params, match, location, history]
+  )
 }

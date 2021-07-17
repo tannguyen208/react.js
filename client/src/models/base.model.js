@@ -1,4 +1,4 @@
-class $Base {
+class BaseModel {
   _model$
 
   /**
@@ -8,9 +8,9 @@ class $Base {
     this._model$ = model
   }
 
-  get _model() {
+  get model$() {
     return this._model$
   }
 }
 
-export default $Base
+export default BaseModel

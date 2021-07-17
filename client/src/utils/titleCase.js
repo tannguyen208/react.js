@@ -1,4 +1,8 @@
-import {join, map, split, toString, upperFirst} from 'lodash'
+import join from 'lodash/join'
+import map from 'lodash/map'
+import split from 'lodash/split'
+import toString from 'lodash/toString'
+import upperFirst from 'lodash/upperFirst'
 
 /**
  * Converts the first character of every word in `string` to upper case and the remaining
@@ -10,14 +14,11 @@ import {join, map, split, toString, upperFirst} from 'lodash'
  * @returns {string} Returns the title-cased string.
  * @example
  *
- * titleCase('FRED FLINTSTONE')
- * // => 'Fred Flintstone'
+ * titleCase('Nguyen Anh TAN')
  */
 function titleCase(string) {
   return join(
-    map(split(toString(string), ' '), function (word) {
-      return upperFirst(word)
-    }),
+    map(split(toString(string), ' '), (word) => upperFirst(word)),
     ' '
   )
 }

@@ -1,7 +1,7 @@
 import http from './http'
 
 const TodoApi = {
-  getAll: () => {
+  getAll() {
     return http.get('/todos')
   },
 }

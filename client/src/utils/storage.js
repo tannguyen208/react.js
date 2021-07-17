@@ -31,13 +31,10 @@ export function remove(key) {
  * @param {string[]} keys
  */
 export function multiGet(...keys) {
-  console.log(keys)
   return {}
 }
 
 /**
  * @param {string[]} keys
  */
-export function multiRemove(...keys) {
-  console.log(keys)
-}
+export function multiRemove(...keys) {}

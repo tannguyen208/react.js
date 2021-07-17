@@ -1,3 +1,12 @@
 {
-  "cSpell.words": ["antd", "immer", "persistor", "tailwindcss", "welldone"]
+  "eslint.nodePath": "../.eslintrc.js",
+  "cSpell.words": [
+    "antd",
+    "immer",
+    "lg",
+    "linebreak",
+    "persistor",
+    "tailwindcss",
+    "welldone"
+  ]
 }

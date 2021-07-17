@@ -23,8 +23,10 @@ const useSharedTheme = () => {
   }
 
   const fetchThemes = useCallback(() => {
-    const __func = async () => {
+    const get = async () => {
       const localTheme = storage.get(storageKey, null)
+      // @ts-ignore
+      // FIXME: Change to get themes from API or ignore if config on local
       const {default: response} = await import('src/assets/themes.json')
       const selectedTheme =
         response.themes.find((theme) => theme.id === localTheme) ||
@@ -41,7 +43,7 @@ const useSharedTheme = () => {
       )
     }
 
-    __func()
+    get()
   }, [])
 
   return {...state, changeTheme, fetchThemes}

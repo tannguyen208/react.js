@@ -1,8 +1,11 @@
 {
   "compilerOptions": {
-    "target": "esnext",
+    "strict": true,
+    "target": "es5",
+    "module": "commonjs",
     "checkJs": true,
     "alwaysStrict": true,
+    "resolveJsonModule": true,
     "jsx": "react",
     "baseUrl": "./",
     "moduleResolution": "node"

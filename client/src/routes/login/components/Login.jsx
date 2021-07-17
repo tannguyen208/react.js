@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useCallback} from 'react'
 import {useAuth} from 'src/hooks/useAuth'
 import {useRouter} from 'src/hooks/useRouter'
 import {routePaths} from 'src/routes/paths'
@@ -9,15 +9,15 @@ function Login() {
   const router = useRouter()
   const [signing, setSigning] = useState(false)
 
-  const onSignIn = React.useCallback(() => {
-    const __func = async () => {
+  const onSignIn = useCallback(() => {
+    const signIn = async () => {
       setSigning(true)
 
       // request login
       if (await auth.signIn()) {
         await delay(1000)
         router.location.state
-          ? router.replace(router.location.state.pathname)
+          ? router.replace(router.location)
           : router.replace(routePaths.dashboard.path)
 
         return
@@ -27,7 +27,7 @@ function Login() {
       setSigning(false)
     }
 
-    __func()
+    signIn()
   }, [])
 
   return (
@@ -38,11 +38,12 @@ function Login() {
 
       <div className="err-body">
         <Choose>
-          <When condition={signing}>{'Signing ...'}</When>
+          <When condition={signing}>Signing ...</When>
           <Otherwise>
             <div
               className="px-2 mx-10 border-gray-200 border-2 rounded cursor-pointer"
               onClick={onSignIn}
+              aria-hidden
             >
               Dashboard Page
             </div>

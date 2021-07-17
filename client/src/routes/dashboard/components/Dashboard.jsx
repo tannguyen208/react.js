@@ -13,12 +13,12 @@ function Dashboard() {
   const auth = useAuth()
   const router = useRouter()
   const [todos, setTodos] = React.useState([])
-  const [textSearch, setTextSearch] = React.useState('remove text for navigate.')
+  const [textSearch, setTextSearch] = React.useState('')
 
   React.useEffect(() => {
     const fetchTodo = async () => {
-      const response = await TodoApi.getAll()
-      setTodos(response.todos.map((todo) => new Todo(todo)))
+      const {data} = await TodoApi.getAll()
+      setTodos(data.todos.map((todo) => new Todo(todo)))
     }
 
     fetchTodo()
@@ -45,9 +45,7 @@ function Dashboard() {
       <RouteLeavingGuard
         when={textSearch.length > 0}
         navigate={router.history.push}
-        shouldBlockNavigation={(location) => {
-          return true
-        }}
+        shouldBlockNavigation={(location) => true}
       />
       <Choose>
         <When condition={textSearch.length > 0}>Editing?</When>
@@ -57,7 +55,7 @@ function Dashboard() {
         value={textSearch}
         onChange={(e) => setTextSearch(e.target.value)}
       />
-      
+
       <br />
 
       <div className="flex flex-row items-center justify-center">
@@ -74,7 +72,7 @@ function Dashboard() {
         <h3 className="text-lg font-bold">Todos</h3>
         <div className="flex-1">
           <Scrollbar style={{height: 300}}>
-            {todos.map((todo: Todo) => (
+            {todos.map((todo) => (
               <div
                 key={todo.id}
                 className="p-1 mt-1 bg-white rounded cursor-pointer flex"

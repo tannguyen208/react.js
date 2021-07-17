@@ -5,7 +5,7 @@ const AccountApi = {
    *
    * @returns http response
    */
-  signIn: () => {
+  signIn() {
     return http.post('/signIn', {
       username: 'tan.na@gmail.com',
     })
@@ -15,7 +15,7 @@ const AccountApi = {
    *
    * @returns http response
    */
-  signOut: () => {
+  signOut() {
     return http.post('/signOut')
   },
 
@@ -23,7 +23,7 @@ const AccountApi = {
    *
    * @returns http response
    */
-  checkSignIn: () => {
+  checkSignIn() {
     return http.post('/checkSignIn')
   },
 }

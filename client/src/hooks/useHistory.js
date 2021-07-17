@@ -14,7 +14,6 @@ const initialState = {
 const reducer = (state, action) => {
   const {past, present, future} = state
 
-  // eslint-disable-next-line default-case
   switch (action.type) {
     case 'UNDO': {
       const previous = past[past.length - 1]
@@ -52,6 +51,8 @@ const reducer = (state, action) => {
         present: initialPresent,
       }
     }
+    default:
+      return state
   }
 }
 

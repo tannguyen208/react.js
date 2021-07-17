@@ -146,8 +146,8 @@ function Scrollbar(props) {
   }, [])
 
   const updateScroll = useCallback(() => {
-    props.onSync(scrollbarRef.current)
-  }, [props.onSync])
+    onSync(scrollbarRef.current)
+  }, [onSync])
 
   return (
     <Comp style={style} ref={containerRef} {...remainProps}>

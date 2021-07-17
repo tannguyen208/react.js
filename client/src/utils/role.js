@@ -1,6 +1,23 @@
 class Role {
   _roles = {}
+
   _permissions = {}
+
+  setRoles(role) {
+    this._roles = role
+  }
+
+  getRoles() {
+    return this._roles
+  }
+
+  setPermissions(permissions) {
+    this._permissions = permissions
+  }
+
+  getPermissions() {
+    return this._permissions
+  }
 }
 
 /**
@@ -21,18 +38,18 @@ Role.ExportOwner = 2048
 /**
  * Global instance
  */
-Role._instance = null
+Role.instance = null
 
 /**
  * get instance
  * @return this.instance
  */
 Role.getInstance = function () {
-  if (!Role._instance) {
-    Role._instance = new Role()
+  if (!Role.instance) {
+    Role.instance = new Role()
   }
 
-  return this._instance
+  return this.instance
 }
 
 /**
@@ -40,7 +57,7 @@ Role.getInstance = function () {
  * @param {Object} role
  */
 Role.setRoles = function (role = {}) {
-  Role.getInstance()._roles = role
+  Role.getInstance().setRoles(role)
 }
 
 /**
@@ -48,16 +65,16 @@ Role.setRoles = function (role = {}) {
  * @param {Object} permissions
  */
 Role.setPermissions = function (permissions = {}) {
-  Role.getInstance()._permissions = permissions
+  Role.getInstance().setPermissions(permissions)
 }
 
 /**
  * Get global roles variables
  * @return {Object} role
  */
-Role.getRoles = function () {
-  const rs = Role.getInstance()._roles
-  return [...arguments].reduce((accumulator, roleKey) => {
+Role.getRoles = function (...args) {
+  const rs = Role.getInstance().getRoles()
+  return [...args].reduce((accumulator, roleKey) => {
     if (roleKey && typeof roleKey === 'string') {
       accumulator[roleKey] = !!rs[roleKey]
     }
@@ -73,7 +90,7 @@ Role.getRoles = function () {
  * @default 0
  */
 Role.getPermissionBy = function (permissionKey) {
-  const p = Role.getInstance()._permissions
+  const p = Role.getInstance().getPermissions()
   return p[permissionKey] || 0
 }
 
@@ -81,10 +98,10 @@ Role.getPermissionBy = function (permissionKey) {
  * Get global permissions variables
  * @return {Object} permissions
  */
-Role.getPermissions = function () {
-  const p = Role.getInstance()._permissions
+Role.getPermissions = function (...args) {
+  const p = Role.getInstance().getPermissions()
 
-  return [...arguments].reduce((accumulator, permissionKey) => {
+  return [...args].reduce((accumulator, permissionKey) => {
     if (permissionKey && typeof permissionKey === 'string') {
       accumulator[permissionKey] = p[permissionKey] || 0
     }
@@ -99,7 +116,7 @@ Role.getPermissions = function () {
  * @param {string} binary 0001010
  * @returns number
  */
-Role.convertToNumber = function (binary: string) {
+Role.convertToNumber = function (binary) {
   return parseInt(binary, 2)
 }
 
@@ -110,13 +127,12 @@ Role.convertToNumber = function (binary: string) {
  * @returns array
  */
 Role.convertToBinary = function (number, length = 16) {
-  return parseInt(number).toString(2).padStart(length, '0')
+  return parseInt(number.toString()).toString(2).padStart(length, '0')
 }
 
 /**
  * Check has permission
  * @param {number} number Number from API
- * @param {number} numberOfPermissions Number of role 1,2,4,8...
  * @returns boolean
  */
 Role.hasPermission = function (number) {
@@ -139,15 +155,16 @@ Role.hasPermission = function (number) {
 
 /**
  * Summary all number
- * @param {number[]} arguments
+ * @param {number[]} args
  * @returns number
  */
-Role.sumPermission = function (...args: number[]): number {
+Role.sumPermission = function (...args) {
   let sum = 0
-  for (let i = 0; i < args.length; i++) {
-    if (typeof arguments[i] !== 'number') continue
 
-    sum += arguments[i]
+  for (let i = 0; i < args.length; i++) {
+    if (typeof args[i] === 'number') {
+      sum += args[i]
+    }
   }
 
   return sum

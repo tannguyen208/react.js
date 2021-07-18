@@ -1,0 +1,41 @@
+// global fonts
+@font-face {
+  font-family: 'Roboto-Regular';
+  font-display: swap;
+  src: url('./assets/font/Roboto-Regular.ttf') format('truetype');
+}
+
+// global variables
+:root {
+  --bodyTextSize: 14px;
+  --bodyTextFont: 'Roboto-Regular';
+}
+
+// global stylesheets
+body {
+  height: 100vh;
+  overflow: hidden;
+  font-size: var(--bodyTextSize, 14px);
+  font-family: var(--bodyTextFont, 'Roboto-Regular'), BlinkMacSystemFont,
+    'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+    'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}

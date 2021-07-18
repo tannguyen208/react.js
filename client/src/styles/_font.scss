@@ -1,9 +1,0 @@
-@mixin gen-font($font-name) {
-  font-family: #{$font-name};
-  font-display: swap;
-  src: url('../assets/font/#{$font-name}.ttf') format('truetype');
-}
-
-@font-face {
-  @include gen-font('Roboto-Regular');
-}

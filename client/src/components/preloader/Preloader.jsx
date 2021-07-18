@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {__DEV__} from 'src/utils/isEnv'
+import './Preloader.scss'
 
 function Preloader({by}) {
   if (__DEV__) {

@@ -10,5 +10,4 @@ import 'tailwindcss/dist/tailwind-experimental.css'
 import 'perfect-scrollbar/css/perfect-scrollbar.css'
 
 // app styled
-import './styles/global.scss'
-import './styles/styles.scss'
+import './styles.scss'

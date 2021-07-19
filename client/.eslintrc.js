@@ -32,6 +32,7 @@ module.exports = {
   plugins: ['react', 'react-hooks'],
   rules: {
     'comma-dangle': ['error', 'only-multiline'],
+    'consistent-return': ['error', {treatUndefinedAsUnspecified: false}],
     'func-names': ['error', 'never'],
     'no-underscore-dangle': [
       'error',

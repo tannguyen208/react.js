@@ -1,7 +1,9 @@
 import React, {useEffect, useState, useCallback} from 'react'
 import {useAuth} from 'src/hooks/useAuth'
 import {useRouter} from 'src/hooks/useRouter'
+import {useScript, STATUS as useScriptStatus} from 'src/hooks/useScript'
 import {routePaths} from 'src/routes/paths'
+import {isGuard} from 'src/utils/isGuard'
 import Scrollbar from 'src/components/scrollbar'
 import Button from 'src/components/button'
 import Todo from 'src/models/todo.model'
@@ -9,11 +11,40 @@ import Input from 'src/components/input'
 import RouteLeavingGuard from 'src/components/routeLeavingGuard'
 import TodoApi from 'src/api/todo.api'
 
+const cdns = {
+  jQuery: 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js',
+  jQueryUI:
+    'https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js',
+  jQueryCSS:
+    'https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css',
+}
+
 function Dashboard() {
   const auth = useAuth()
   const router = useRouter()
   const [todos, setTodos] = useState([])
   const [textSearch, setTextSearch] = useState('')
+  const deepScrips = [
+    useScript(cdns.jQuery),
+    useScript(cdns.jQueryUI),
+    useScript(cdns.jQueryCSS),
+  ]
+  const deepScripsLoaded = isGuard(
+    ...deepScrips.reduce(
+      (acc, cur) => [...acc, cur === useScriptStatus.READY],
+      []
+    )
+  )
+
+  useEffect(() => {
+    if (!deepScripsLoaded) return
+
+    async function handler(event) {
+      // do something with event
+    }
+
+    handler()
+  }, [deepScripsLoaded])
 
   useEffect(() => {
     const fetchTodo = async () => {
@@ -22,6 +53,10 @@ function Dashboard() {
     }
 
     fetchTodo()
+
+    setTimeout(() => {
+      setTodos((prev) => [...prev])
+    }, 5000)
   }, [])
 
   const onSignOut = useCallback(() => {
